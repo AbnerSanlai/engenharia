@@ -35,6 +35,8 @@ dependencies:
   flutter_svg: ^0.22.0
   google_fonts: ^2.1.0
   getwidget: ^2.0.3
+  firebase_auth: ^2.0.0
+  google_sign_in: ^5.0.4
   
 
 dev_dependencies:

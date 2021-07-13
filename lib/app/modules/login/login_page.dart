@@ -1,3 +1,4 @@
+import 'package:engesoft/app/modules/login/auth_google.dart';
 import 'package:engesoft/app/modules/login/custom_button_widget.dart';
 import 'package:engesoft/app/modules/login/custom_form_field_widget.dart';
 import 'package:engesoft/app/modules/login/login_store.dart';
@@ -14,6 +15,8 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   LoginStore loginStore = Modular.get();
+  GoogleSignInProvider googleSignInProvider = Modular.get();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -124,7 +127,12 @@ class LoginPageState extends State<LoginPage> {
                                           fit: BoxFit.fill)),
                                 )),
                             InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  googleSignInProvider.login();
+                                  if (googleSignInProvider.isLoged()) {
+                                    Modular.to.pushReplacementNamed('/home');
+                                  }
+                                },
                                 child: Container(
                                   height: 50,
                                   width: 50,
