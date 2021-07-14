@@ -64,24 +64,39 @@ class LoginPageState extends State<LoginPage> {
                           controller: emailController,
                           typekey: TextInputType.emailAddress,
                           obscure: false,
+                          corIcon: Colors.amber,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Observer(
                           builder: (context) => CustomFormFieldWidget(
-                            label: 'Senha',
-                            icon: Icons.lock,
-                            controller: passwordController,
-                            typekey: TextInputType.text,
-                            funcao: loginStore.setvisible,
-                            obscure: loginStore.ver == true ? false : true,
-                          ),
+                              label: 'Senha',
+                              icon: Icons.lock,
+                              controller: passwordController,
+                              typekey: TextInputType.text,
+                              funcao: loginStore.setvisible,
+                              obscure: loginStore.ver == true ? false : true,
+                              corIcon: Colors.amber),
                         ),
                         SizedBox(
                           height: 25,
                         ),
-                        CustomButtonWidget(),
+                        CustomButtonWidget(
+                          onTap: () {
+                            Modular.to.pushReplacementNamed('/home');
+                          },
+                          title: 'Logar',
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        CustomButtonWidget(
+                          onTap: () {
+                            Modular.to.pushNamed('/cadastro');
+                          },
+                          title: 'Cadastrar',
+                        ),
                         SizedBox(
                           height: 25,
                         ),

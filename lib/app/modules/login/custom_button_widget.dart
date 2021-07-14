@@ -3,7 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   final String title;
-  const CustomButtonWidget({Key? key, this.title = "CustomButtonWidget"})
+  final VoidCallback? onTap;
+  const CustomButtonWidget({Key? key, this.title = "", this.onTap})
       : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class CustomButtonWidget extends StatelessWidget {
           borderRadius: new BorderRadius.all(const Radius.circular(30.0)),
         ),
         child: Text(
-          "Entrar",
+          title,
           style: TextStyle(
             color: Colors.black,
             fontSize: 20.0,
@@ -27,9 +28,7 @@ class CustomButtonWidget extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () {
-        Modular.to.pushReplacementNamed('/home');
-      },
+      onTap: onTap,
     );
   }
 }

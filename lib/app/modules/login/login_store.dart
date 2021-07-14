@@ -29,7 +29,7 @@ abstract class _LoginStoreBase with Store {
   var userMail;
 
   @observable
-  var userPhoto;
+  var userPassword;
 
   @observable
   var userName;
@@ -73,27 +73,3 @@ abstract class _LoginStoreBase with Store {
     }
   }
 }
-
-
-
-  // Future googleLogin() async {
-  //   final googleSignIn = GoogleSignIn();
-  //   final googleUser = await googleSignIn.signIn();
-  //   final auth = FirebaseAuth.instance;
-
-  //   if (googleUser == null) return;
-  //   user = googleUser;
-
-  //   final googleAuth = await googleUser.authentication;
-
-  //   final credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth.accessToken,
-  //     idToken: googleAuth.idToken,
-  //   );
-
-  //   accessToken = credential.accessToken;
-  //   idToken = credential.idToken;
-  //   await FirebaseAuth.instance.signInWithCredential(credential);
-
-  //   Modular.to.pushReplacementNamed('/home');
-  // }

@@ -4,6 +4,7 @@ class CustomFormFieldWidget extends StatelessWidget {
   final String title;
   final String label;
   final IconData icon;
+  final Color corIcon;
   final TextEditingController controller;
   final TextInputType typekey;
   final obscure;
@@ -17,6 +18,7 @@ class CustomFormFieldWidget extends StatelessWidget {
     required this.typekey,
     required this.obscure,
     this.funcao,
+    required this.corIcon,
   }) : super(key: key);
 
   @override
@@ -49,7 +51,10 @@ class CustomFormFieldWidget extends StatelessWidget {
           )),
           InkWell(
             onTap: funcao,
-            child: Icon(icon),
+            child: Icon(
+              icon,
+              color: corIcon,
+            ),
           ) // Pode passar imagens ou icons
         ],
       ),

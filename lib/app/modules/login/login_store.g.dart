@@ -99,18 +99,18 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
-  final _$userPhotoAtom = Atom(name: '_LoginStoreBase.userPhoto');
+  final _$userPasswordAtom = Atom(name: '_LoginStoreBase.userPassword');
 
   @override
-  dynamic get userPhoto {
-    _$userPhotoAtom.reportRead();
-    return super.userPhoto;
+  dynamic get userPassword {
+    _$userPasswordAtom.reportRead();
+    return super.userPassword;
   }
 
   @override
-  set userPhoto(dynamic value) {
-    _$userPhotoAtom.reportWrite(value, super.userPhoto, () {
-      super.userPhoto = value;
+  set userPassword(dynamic value) {
+    _$userPasswordAtom.reportWrite(value, super.userPassword, () {
+      super.userPassword = value;
     });
   }
 
@@ -167,7 +167,7 @@ accessToken: ${accessToken},
 user: ${user},
 user2: ${user2},
 userMail: ${userMail},
-userPhoto: ${userPhoto},
+userPassword: ${userPassword},
 userName: ${userName}
     ''';
   }
