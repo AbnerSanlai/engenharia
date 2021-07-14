@@ -116,7 +116,9 @@ class LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  loginStore.logout();
+                                },
                                 child: Container(
                                   height: 50,
                                   width: 50,
@@ -128,10 +130,7 @@ class LoginPageState extends State<LoginPage> {
                                 )),
                             InkWell(
                                 onTap: () {
-                                  googleSignInProvider.login();
-                                  if (googleSignInProvider.isLoged()) {
-                                    Modular.to.pushReplacementNamed('/home');
-                                  }
+                                  loginStore.signInWithGoogle();
                                 },
                                 child: Container(
                                   height: 50,

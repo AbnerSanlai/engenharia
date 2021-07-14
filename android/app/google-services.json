@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "294503844684",
+    "project_id": "angeapp-34cab",
+    "storage_bucket": "angeapp-34cab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294503844684:android:9bee57aa4e4845f8571de9",
+        "android_client_info": {
+          "package_name": "com.engenharia.engesoft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294503844684-4upataf1p7v648oirc1c9n7vohd9io2o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.engenharia.engesoft",
+            "certificate_hash": "56f2d1efe8c5ea527f19c5f673f1f3506d105fbd"
+          }
+        },
+        {
+          "client_id": "294503844684-1jn7rl78r1vtt54fqhn6rvq3r3rrp2jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPvi8uCLIOf2ZQJMW1q9e-Tw1vHSUhYgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294503844684-1jn7rl78r1vtt54fqhn6rvq3r3rrp2jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

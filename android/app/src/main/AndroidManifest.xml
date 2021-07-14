@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.engesoft">
+    package="com.engenharia.engesoft">
    <application
         android:label="engesoft"
         android:icon="@mipmap/ic_launcher">
