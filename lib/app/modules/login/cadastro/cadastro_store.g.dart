@@ -9,64 +9,82 @@ part of 'cadastro_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CadastroStore on _CadastroStoreBase, Store {
-  final _$userNomeAtom = Atom(name: '_CadastroStoreBase.userNome');
+  final _$nomeControllerAtom = Atom(name: '_CadastroStoreBase.nomeController');
 
   @override
-  dynamic get userNome {
-    _$userNomeAtom.reportRead();
-    return super.userNome;
+  TextEditingController get nomeController {
+    _$nomeControllerAtom.reportRead();
+    return super.nomeController;
   }
 
   @override
-  set userNome(dynamic value) {
-    _$userNomeAtom.reportWrite(value, super.userNome, () {
-      super.userNome = value;
+  set nomeController(TextEditingController value) {
+    _$nomeControllerAtom.reportWrite(value, super.nomeController, () {
+      super.nomeController = value;
     });
   }
 
-  final _$userLoginAtom = Atom(name: '_CadastroStoreBase.userLogin');
+  final _$emailControllerAtom =
+      Atom(name: '_CadastroStoreBase.emailController');
 
   @override
-  dynamic get userLogin {
-    _$userLoginAtom.reportRead();
-    return super.userLogin;
+  TextEditingController get emailController {
+    _$emailControllerAtom.reportRead();
+    return super.emailController;
   }
 
   @override
-  set userLogin(dynamic value) {
-    _$userLoginAtom.reportWrite(value, super.userLogin, () {
-      super.userLogin = value;
+  set emailController(TextEditingController value) {
+    _$emailControllerAtom.reportWrite(value, super.emailController, () {
+      super.emailController = value;
     });
   }
 
-  final _$userSenhaAtom = Atom(name: '_CadastroStoreBase.userSenha');
+  final _$senhaControllerAtom =
+      Atom(name: '_CadastroStoreBase.senhaController');
 
   @override
-  dynamic get userSenha {
-    _$userSenhaAtom.reportRead();
-    return super.userSenha;
+  TextEditingController get senhaController {
+    _$senhaControllerAtom.reportRead();
+    return super.senhaController;
   }
 
   @override
-  set userSenha(dynamic value) {
-    _$userSenhaAtom.reportWrite(value, super.userSenha, () {
-      super.userSenha = value;
+  set senhaController(TextEditingController value) {
+    _$senhaControllerAtom.reportWrite(value, super.senhaController, () {
+      super.senhaController = value;
     });
   }
 
-  final _$userRepetirSenhaAtom =
-      Atom(name: '_CadastroStoreBase.userRepetirSenha');
+  final _$repetirSenhaControllerAtom =
+      Atom(name: '_CadastroStoreBase.repetirSenhaController');
 
   @override
-  dynamic get userRepetirSenha {
-    _$userRepetirSenhaAtom.reportRead();
-    return super.userRepetirSenha;
+  TextEditingController get repetirSenhaController {
+    _$repetirSenhaControllerAtom.reportRead();
+    return super.repetirSenhaController;
   }
 
   @override
-  set userRepetirSenha(dynamic value) {
-    _$userRepetirSenhaAtom.reportWrite(value, super.userRepetirSenha, () {
-      super.userRepetirSenha = value;
+  set repetirSenhaController(TextEditingController value) {
+    _$repetirSenhaControllerAtom
+        .reportWrite(value, super.repetirSenhaController, () {
+      super.repetirSenhaController = value;
+    });
+  }
+
+  final _$verAtom = Atom(name: '_CadastroStoreBase.ver');
+
+  @override
+  bool get ver {
+    _$verAtom.reportRead();
+    return super.ver;
+  }
+
+  @override
+  set ver(bool value) {
+    _$verAtom.reportWrite(value, super.ver, () {
+      super.ver = value;
     });
   }
 
@@ -118,6 +136,17 @@ mixin _$CadastroStore on _CadastroStoreBase, Store {
   }
 
   @override
+  void setvisible() {
+    final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
+        name: '_CadastroStoreBase.setvisible');
+    try {
+      return super.setvisible();
+    } finally {
+      _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   bool verificaSenha() {
     final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
         name: '_CadastroStoreBase.verificaSenha');
@@ -142,10 +171,11 @@ mixin _$CadastroStore on _CadastroStoreBase, Store {
   @override
   String toString() {
     return '''
-userNome: ${userNome},
-userLogin: ${userLogin},
-userSenha: ${userSenha},
-userRepetirSenha: ${userRepetirSenha}
+nomeController: ${nomeController},
+emailController: ${emailController},
+senhaController: ${senhaController},
+repetirSenhaController: ${repetirSenhaController},
+ver: ${ver}
     ''';
   }
 }

@@ -16,7 +16,6 @@ class LoginPage extends StatefulWidget {
 class LoginPageState extends State<LoginPage> {
   LoginStore loginStore = Modular.get();
   GoogleSignInProvider googleSignInProvider = Modular.get();
-
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -132,7 +131,7 @@ class LoginPageState extends State<LoginPage> {
                           children: [
                             InkWell(
                                 onTap: () {
-                                  loginStore.logout();
+                                  loginStore.login();
                                 },
                                 child: Container(
                                   height: 50,

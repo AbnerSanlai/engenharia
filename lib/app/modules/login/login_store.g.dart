@@ -9,6 +9,21 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStoreBase, Store {
+  final _$userModelAtom = Atom(name: '_LoginStoreBase.userModel');
+
+  @override
+  ObservableList<UserModel> get userModel {
+    _$userModelAtom.reportRead();
+    return super.userModel;
+  }
+
+  @override
+  set userModel(ObservableList<UserModel> value) {
+    _$userModelAtom.reportWrite(value, super.userModel, () {
+      super.userModel = value;
+    });
+  }
+
   final _$verAtom = Atom(name: '_LoginStoreBase.ver');
 
   @override
@@ -69,66 +84,6 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
-  final _$user2Atom = Atom(name: '_LoginStoreBase.user2');
-
-  @override
-  dynamic get user2 {
-    _$user2Atom.reportRead();
-    return super.user2;
-  }
-
-  @override
-  set user2(dynamic value) {
-    _$user2Atom.reportWrite(value, super.user2, () {
-      super.user2 = value;
-    });
-  }
-
-  final _$userMailAtom = Atom(name: '_LoginStoreBase.userMail');
-
-  @override
-  dynamic get userMail {
-    _$userMailAtom.reportRead();
-    return super.userMail;
-  }
-
-  @override
-  set userMail(dynamic value) {
-    _$userMailAtom.reportWrite(value, super.userMail, () {
-      super.userMail = value;
-    });
-  }
-
-  final _$userPasswordAtom = Atom(name: '_LoginStoreBase.userPassword');
-
-  @override
-  dynamic get userPassword {
-    _$userPasswordAtom.reportRead();
-    return super.userPassword;
-  }
-
-  @override
-  set userPassword(dynamic value) {
-    _$userPasswordAtom.reportWrite(value, super.userPassword, () {
-      super.userPassword = value;
-    });
-  }
-
-  final _$userNameAtom = Atom(name: '_LoginStoreBase.userName');
-
-  @override
-  dynamic get userName {
-    _$userNameAtom.reportRead();
-    return super.userName;
-  }
-
-  @override
-  set userName(dynamic value) {
-    _$userNameAtom.reportWrite(value, super.userName, () {
-      super.userName = value;
-    });
-  }
-
   final _$signInWithGoogleAsyncAction =
       AsyncAction('_LoginStoreBase.signInWithGoogle');
 
@@ -142,6 +97,13 @@ mixin _$LoginStore on _LoginStoreBase, Store {
   @override
   Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
+  }
+
+  final _$loginAsyncAction = AsyncAction('_LoginStoreBase.login');
+
+  @override
+  Future<void> login() {
+    return _$loginAsyncAction.run(() => super.login());
   }
 
   final _$_LoginStoreBaseActionController =
@@ -161,14 +123,11 @@ mixin _$LoginStore on _LoginStoreBase, Store {
   @override
   String toString() {
     return '''
+userModel: ${userModel},
 ver: ${ver},
 idToken: ${idToken},
 accessToken: ${accessToken},
-user: ${user},
-user2: ${user2},
-userMail: ${userMail},
-userPassword: ${userPassword},
-userName: ${userName}
+user: ${user}
     ''';
   }
 }

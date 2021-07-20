@@ -43,7 +43,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             Center(
               child: CustomStackWidget(
                 funcaoclick: () {
-                  Modular.to.pushReplacementNamed('/projetos');
+                  Modular.to.pushNamed('/projetos');
                 },
                 localImage: 'assets/image/projetos.jpg',
                 title: 'Meus Projetos',

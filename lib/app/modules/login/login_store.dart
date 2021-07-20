@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
+import 'package:engesoft/app/model/UserModel.dart';
+import 'package:engesoft/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 import 'package:mobx/mobx.dart';
 part 'login_store.g.dart';
 
@@ -12,7 +15,15 @@ abstract class _LoginStoreBase with Store {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @observable
+  ObservableList<UserModel> userModel = <UserModel>[].asObservable();
+
+  @observable
   bool ver = false;
+
+  @action
+  void setvisible() {
+    ver = !ver;
+  }
 
   @observable
   var idToken;
@@ -22,22 +33,6 @@ abstract class _LoginStoreBase with Store {
 
   @observable
   var user;
-  @observable
-  var user2;
-
-  @observable
-  var userMail;
-
-  @observable
-  var userPassword;
-
-  @observable
-  var userName;
-
-  @action
-  void setvisible() {
-    ver = !ver;
-  }
 
   @action
   Future<void> signInWithGoogle() async {
@@ -71,5 +66,12 @@ abstract class _LoginStoreBase with Store {
     if (googleUser == null) {
       Modular.to.pushReplacementNamed('/');
     }
+  }
+
+  @action
+  Future<void> login() async {
+    final dio = Dio();
+    final response = await dio.get("https://google.com");
+    print(response);
   }
 }

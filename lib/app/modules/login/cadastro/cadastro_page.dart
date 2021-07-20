@@ -14,10 +14,6 @@ class CadastroPage extends StatefulWidget {
 
 class CadastroPageState extends State<CadastroPage> {
   CadastroStore cadastroStore = Modular.get();
-  TextEditingController nomeController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController senhaController = TextEditingController();
-  TextEditingController repetirSenhaController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +42,7 @@ class CadastroPageState extends State<CadastroPage> {
                   builder: (context) => CustomFormFieldWidget(
                       label: 'Nome',
                       icon: Icons.people,
-                      controller: nomeController,
+                      controller: cadastroStore.nomeController,
                       typekey: TextInputType.text,
                       //  funcao: cadastroStore.changeUserName(nomeController),
                       obscure: false,
@@ -58,10 +54,10 @@ class CadastroPageState extends State<CadastroPage> {
                 builder: (context) => CustomFormFieldWidget(
                     label: 'Login',
                     icon: Icons.email,
-                    controller: emailController,
+                    controller: cadastroStore.emailController,
                     typekey: TextInputType.text,
                     //funcao: cadastroStore.changeUserLogin(emailController),
-                    obscure: false,
+                    obscure: true,
                     corIcon: Colors.amber),
               ),
               SizedBox(
@@ -71,10 +67,10 @@ class CadastroPageState extends State<CadastroPage> {
                   builder: (context) => CustomFormFieldWidget(
                       label: 'Senha',
                       icon: Icons.lock,
-                      controller: senhaController,
+                      controller: cadastroStore.senhaController,
                       typekey: TextInputType.text,
-                      //funcao: cadastroStore.changeUserSenha(senhaController),
-                      obscure: false,
+                      funcao: cadastroStore.setvisible,
+                      obscure: cadastroStore.ver == true ? false : true,
                       corIcon: Colors.amber)),
               SizedBox(
                 height: 25,
@@ -83,11 +79,10 @@ class CadastroPageState extends State<CadastroPage> {
                   builder: (context) => CustomFormFieldWidget(
                       label: 'Repetir Senha',
                       icon: Icons.lock,
-                      controller: repetirSenhaController,
+                      controller: cadastroStore.repetirSenhaController,
                       typekey: TextInputType.text,
-                      // funcao: cadastroStore
-                      //     .changeUserRepetirSenha(repetirSenhaController),
-                      obscure: false,
+                      funcao: cadastroStore.setvisible,
+                      obscure: cadastroStore.ver == true ? false : true,
                       corIcon: Colors.amber)),
               SizedBox(
                 height: 25,
@@ -95,14 +90,15 @@ class CadastroPageState extends State<CadastroPage> {
               CustomButtonWidget(
                 title: 'Cadastrar',
                 onTap: () {
-                  if (senhaController.text != '' &&
+                  print(cadastroStore.nomeController);
+                  /*        if (senhaController.text != '' &&
                       repetirSenhaController.text != '' &&
                       nomeController != '' &&
                       emailController != '') {
                     if (senhaController.text == repetirSenhaController.text) {
                       Modular.to.pushReplacementNamed('/');
                     }
-                  }
+                  } */
                 },
               )
             ],

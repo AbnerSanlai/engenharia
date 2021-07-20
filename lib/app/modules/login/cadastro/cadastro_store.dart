@@ -8,39 +8,48 @@ class CadastroStore = _CadastroStoreBase with _$CadastroStore;
 
 abstract class _CadastroStoreBase with Store {
   @observable
-  var userNome;
+  TextEditingController nomeController = TextEditingController();
 
   @action
-  changeUserName(value) => userNome = value;
+  changeUserName(value) => nomeController = value;
 
   @observable
-  var userLogin;
+  TextEditingController emailController = TextEditingController();
 
   @action
-  changeUserLogin(value) => userLogin = value;
+  changeUserLogin(value) => emailController = value;
 
   @observable
-  var userSenha;
+  TextEditingController senhaController = TextEditingController();
 
   @action
-  changeUserSenha(value) => userSenha = value;
+  changeUserSenha(value) => senhaController = value;
 
   @observable
-  var userRepetirSenha;
+  TextEditingController repetirSenhaController = TextEditingController();
+
   @action
-  changeUserRepetirSenha(value) => userRepetirSenha = value;
+  changeUserRepetirSenha(value) => repetirSenhaController = value;
+
+  @observable
+  bool ver = false;
+
+  @action
+  void setvisible() {
+    ver = !ver;
+  }
 
   @action
   bool verificaSenha() {
-    return userSenha == userRepetirSenha;
+    return senhaController == repetirSenhaController;
   }
 
   @action
   bool isCadValido() {
-    return (userNome != null ||
-            userLogin != null ||
-            userRepetirSenha != null ||
-            userSenha != null) &&
+    return (nomeController != null ||
+            emailController != null ||
+            repetirSenhaController != null ||
+            senhaController != null) &&
         verificaSenha();
   }
 }
