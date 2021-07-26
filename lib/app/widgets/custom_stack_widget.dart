@@ -53,21 +53,28 @@ class CustomStackWidget extends StatelessWidget {
               height: 100,
               width: 100,
               decoration: BoxDecoration(
-                  color: Colors.amber,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5), //color of shadow
-                      spreadRadius: 4, //spread radius
-                      blurRadius: 5, // blur radius
-                      offset: Offset(0, 2), // changes position of shadow
-                      //first paramerter of offset is left-right
-                      //second parameter is top to down
-                    )
-                  ],
-                  image: DecorationImage(
-                      image: AssetImage(localImage!), fit: BoxFit.fill)),
+                color: Colors.amber[200],
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.black),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: 4,
+                    blurRadius: 5,
+                    offset: Offset(0, 2),
+                  )
+                ],
+              ),
+              child: Center(
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(localImage!), fit: BoxFit.fill),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

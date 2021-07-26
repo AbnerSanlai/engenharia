@@ -45,7 +45,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 funcaoclick: () {
                   Modular.to.pushNamed('/projetos');
                 },
-                localImage: 'assets/image/projetos.jpg',
+                localImage: 'assets/image/projetos.png',
                 title: 'Meus Projetos',
               ),
             ),
@@ -54,8 +54,20 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             ),
             Center(
               child: CustomStackWidget(
+                funcaoclick: () {
+                  Modular.to.pushNamed('/clientes');
+                },
+                localImage: 'assets/image/clientes.png',
+                title: 'Clientes',
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Center(
+              child: CustomStackWidget(
                 funcaoclick: () {},
-                localImage: 'assets/image/calculadora.jpg',
+                localImage: 'assets/image/calculadora.png',
                 title: 'Calculos',
               ),
             ),
@@ -65,7 +77,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             Center(
               child: CustomStackWidget(
                 funcaoclick: () {},
-                localImage: 'assets/image/tips.jpg',
+                localImage: 'assets/image/tips.png',
                 title: 'Instruções',
               ),
             ),

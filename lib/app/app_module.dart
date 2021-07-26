@@ -1,3 +1,4 @@
+import 'package:engesoft/app/modules/cliente/cliente_module.dart';
 import 'package:engesoft/app/modules/home/home_module.dart';
 import 'package:engesoft/app/modules/login/login_module.dart';
 import 'package:engesoft/app/modules/login/login_store.dart';
@@ -15,5 +16,6 @@ class AppModule extends Module {
     ModuleRoute('/', module: LoginModule()),
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/projetos', module: ProjetosModule()),
+    ModuleRoute('/clientes', module: ClienteModule())
   ];
 }

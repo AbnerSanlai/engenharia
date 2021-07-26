@@ -15,52 +15,57 @@ class CustomProjectWidget extends StatelessWidget {
     return Observer(builder: (_) {
       return InkWell(
         hoverColor: Colors.amber[100],
-        child: Card(
-            margin: EdgeInsets.only(bottom: 450, left: 10, right: 10, top: 10),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20), // if you need this
-              side: BorderSide(
-                color: Colors.black,
-                width: 1,
-              ),
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                RowCustom(
-                  nomeProjeto: projeto.nomeProjeto,
-                  nomeCLiente: projeto.nomeCLiente,
-                  telCliente: projeto.telCliente,
-                  ruaCliente: projeto.ruaCliente,
-                  numEndCliente: projeto.numEndCliente,
-                  bairroCliente: projeto.bairroCliente,
-                  cidadeUFCliente: projeto.cidadeUFCliente,
-                ),
-                Divider(
-                  endIndent: 25,
-                  indent: 25,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20), // if you need this
+                side: BorderSide(
                   color: Colors.black,
+                  width: 1,
                 ),
-                Row(
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
                   children: [
                     SizedBox(
-                      width: 30,
+                      height: 5,
                     ),
-                    CustomRowIcon(
-                      textIcon1: 'Localização',
-                      textIcon2: 'Orçamento',
-                      caminhoImagem: getImagem(projeto.status),
+                    RowCustom(
+                      nomeProjeto: projeto.nomeProjeto,
+                      nomeCLiente: projeto.nomeCLiente,
+                      telCliente: projeto.telCliente,
+                      ruaCliente: projeto.ruaCliente,
+                      numEndCliente: projeto.numEndCliente,
+                      bairroCliente: projeto.bairroCliente,
+                      cidadeUFCliente: projeto.cidadeUFCliente,
                     ),
+                    Divider(
+                      endIndent: 25,
+                      indent: 25,
+                      color: Colors.black,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        CustomRowIcon(
+                          textIcon1: 'Localização',
+                          textIcon2: 'Orçamento',
+                          caminhoImagem: getImagem(projeto.status),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(projeto.dataEntrega.toString())
                   ],
                 ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text('Prazo 10 de Dezembro de 2021 as 18:00')
-              ],
-            )),
+              )),
+        ),
         onTap: () {},
       );
     });

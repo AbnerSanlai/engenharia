@@ -30,6 +30,11 @@ class ProjetosPageState extends State<ProjetosPage> {
               onPressed: () {},
               icon: Icon(Icons.search),
               color: Colors.black,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add),
+              color: Colors.black,
             )
           ]),
       drawer: CustomDrawerWidget(
