@@ -8,6 +8,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../constants.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   LoginPageState createState() => LoginPageState();
@@ -58,9 +60,9 @@ class LoginPageState extends State<LoginPage> {
                           height: 25,
                         ),
                         CustomFormFieldWidget(
-                          label: 'Login',
+                          label: 'Email',
                           icon: Icons.email,
-                          controller: emailController,
+                          controller: loginStore.emailController,
                           typekey: TextInputType.emailAddress,
                           obscure: false,
                           corIcon: Colors.amber,
@@ -72,7 +74,7 @@ class LoginPageState extends State<LoginPage> {
                           builder: (context) => CustomFormFieldWidget(
                               label: 'Senha',
                               icon: Icons.lock,
-                              controller: passwordController,
+                              controller: loginStore.senhaController,
                               typekey: TextInputType.text,
                               funcao: loginStore.setvisible,
                               obscure: loginStore.ver == true ? false : true,
@@ -83,7 +85,7 @@ class LoginPageState extends State<LoginPage> {
                         ),
                         CustomButtonWidget(
                           onTap: () {
-                            Modular.to.pushReplacementNamed('/home');
+                            loginStore.login();
                           },
                           title: 'Logar',
                         ),
@@ -131,7 +133,7 @@ class LoginPageState extends State<LoginPage> {
                           children: [
                             InkWell(
                                 onTap: () {
-                                  loginStore.login();
+                                  loginStore.loginGoogle();
                                 },
                                 child: Container(
                                   height: 50,
@@ -143,27 +145,28 @@ class LoginPageState extends State<LoginPage> {
                                           fit: BoxFit.fill)),
                                 )),
                             InkWell(
-                                onTap: () {
-                                  loginStore.signInWithGoogle();
-                                },
+                              onTap: () {
+                                Modular.to.pushNamed('/webpage');
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                                 child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(25),
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/image/google.png'),
-                                            fit: BoxFit.fill)),
-                                  ),
-                                )),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(25),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/image/google.png'),
+                                          fit: BoxFit.fill)),
+                                ),
+                              ),
+                            ),
                           ],
                         )
                       ],

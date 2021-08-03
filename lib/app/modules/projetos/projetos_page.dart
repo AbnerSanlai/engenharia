@@ -43,15 +43,21 @@ class ProjetosPageState extends State<ProjetosPage> {
         userName: loginStore.user.displayName,
         userPhoto: loginStore.user.photoURL,
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.all(4),
-        itemCount: projetosStore.listProjetos.length,
-        itemBuilder: (_, index) {
-          var projeto = projetosStore.listProjetos[index];
-          return CustomProjectWidget(
-            projeto: projeto,
-          );
-        },
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/image/fundoEnge.jpg'),
+                fit: BoxFit.fitHeight)),
+        child: ListView.builder(
+          padding: EdgeInsets.all(4),
+          itemCount: projetosStore.listProjetos.length,
+          itemBuilder: (_, index) {
+            var projeto = projetosStore.listProjetos[index];
+            return CustomProjectWidget(
+              projeto: projeto,
+            );
+          },
+        ),
       ),
     );
   }

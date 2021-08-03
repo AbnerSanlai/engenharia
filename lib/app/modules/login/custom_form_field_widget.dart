@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomFormFieldWidget extends StatelessWidget {
   final String title;
@@ -9,6 +10,7 @@ class CustomFormFieldWidget extends StatelessWidget {
   final TextInputType typekey;
   final obscure;
   final VoidCallback? funcao;
+  final FocusNode? foco;
   const CustomFormFieldWidget({
     Key? key,
     this.title = "CustomFormFieldWidget",
@@ -19,6 +21,7 @@ class CustomFormFieldWidget extends StatelessWidget {
     required this.obscure,
     this.funcao,
     required this.corIcon,
+    this.foco,
   }) : super(key: key);
 
   @override
@@ -43,9 +46,12 @@ class CustomFormFieldWidget extends StatelessWidget {
         children: [
           Expanded(
               child: TextFormField(
+            focusNode: foco,
             controller: controller,
-            decoration:
-                InputDecoration(border: InputBorder.none, hintText: label),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: label,
+                hintStyle: GoogleFonts.abel()),
             keyboardType: typekey,
             obscureText: obscure,
           )),

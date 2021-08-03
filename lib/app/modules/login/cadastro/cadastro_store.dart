@@ -1,5 +1,9 @@
+import 'package:engesoft/app/modules/controller/customalert/customalert_store.dart';
+import 'package:engesoft/app/modules/login/login_store.dart';
+import 'package:engesoft/app/widgets/custom_alert_dialog_alert_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:mobx/mobx.dart';
 
 part 'cadastro_store.g.dart';
@@ -7,49 +11,39 @@ part 'cadastro_store.g.dart';
 class CadastroStore = _CadastroStoreBase with _$CadastroStore;
 
 abstract class _CadastroStoreBase with Store {
+  LoginStore loginStore = Modular.get();
   @observable
   TextEditingController nomeController = TextEditingController();
-
-  @action
-  changeUserName(value) => nomeController = value;
-
   @observable
   TextEditingController emailController = TextEditingController();
-
-  @action
-  changeUserLogin(value) => emailController = value;
-
   @observable
   TextEditingController senhaController = TextEditingController();
-
-  @action
-  changeUserSenha(value) => senhaController = value;
-
   @observable
   TextEditingController repetirSenhaController = TextEditingController();
 
-  @action
-  changeUserRepetirSenha(value) => repetirSenhaController = value;
-
   @observable
-  bool ver = false;
+  bool verSenha = false;
+  @observable
+  bool verRepSenha = false;
 
   @action
-  void setvisible() {
-    ver = !ver;
+  void setvisibleSenha() {
+    verSenha = !verSenha;
+  }
+
+  @action
+  void setvisibleRepSenha() {
+    verRepSenha = !verRepSenha;
   }
 
   @action
   bool verificaSenha() {
-    return senhaController == repetirSenhaController;
+    return senhaController.text == repetirSenhaController.text;
   }
 
   @action
-  bool isCadValido() {
-    return (nomeController != null ||
-            emailController != null ||
-            repetirSenhaController != null ||
-            senhaController != null) &&
-        verificaSenha();
+  void cadastrar() {
+    //  loginStore.register(nomeController.text, emailController.text, 'local',
+    //    senhaController.text, '', '');
   }
 }

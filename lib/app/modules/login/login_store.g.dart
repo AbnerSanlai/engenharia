@@ -39,6 +39,36 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
+  final _$emailControllerAtom = Atom(name: '_LoginStoreBase.emailController');
+
+  @override
+  TextEditingController get emailController {
+    _$emailControllerAtom.reportRead();
+    return super.emailController;
+  }
+
+  @override
+  set emailController(TextEditingController value) {
+    _$emailControllerAtom.reportWrite(value, super.emailController, () {
+      super.emailController = value;
+    });
+  }
+
+  final _$senhaControllerAtom = Atom(name: '_LoginStoreBase.senhaController');
+
+  @override
+  TextEditingController get senhaController {
+    _$senhaControllerAtom.reportRead();
+    return super.senhaController;
+  }
+
+  @override
+  set senhaController(TextEditingController value) {
+    _$senhaControllerAtom.reportWrite(value, super.senhaController, () {
+      super.senhaController = value;
+    });
+  }
+
   final _$idTokenAtom = Atom(name: '_LoginStoreBase.idToken');
 
   @override
@@ -99,11 +129,29 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  final _$loginAsyncAction = AsyncAction('_LoginStoreBase.login');
+  final _$loginGoogleAsyncAction = AsyncAction('_LoginStoreBase.loginGoogle');
 
   @override
-  Future<void> login() {
-    return _$loginAsyncAction.run(() => super.login());
+  Future<void> loginGoogle() {
+    return _$loginGoogleAsyncAction.run(() => super.loginGoogle());
+  }
+
+  final _$registerAsyncAction = AsyncAction('_LoginStoreBase.register');
+
+  @override
+  Future<void> register(dynamic username, dynamic email, dynamic provider,
+      dynamic password, dynamic resetPasswordToken, dynamic confirmationToken) {
+    return _$registerAsyncAction.run(() => super.register(username, email,
+        provider, password, resetPasswordToken, confirmationToken));
+  }
+
+  final _$launchInWebViewOrVCAsyncAction =
+      AsyncAction('_LoginStoreBase.launchInWebViewOrVC');
+
+  @override
+  Future<void> launchInWebViewOrVC(String url) {
+    return _$launchInWebViewOrVCAsyncAction
+        .run(() => super.launchInWebViewOrVC(url));
   }
 
   final _$_LoginStoreBaseActionController =
@@ -125,6 +173,8 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     return '''
 userModel: ${userModel},
 ver: ${ver},
+emailController: ${emailController},
+senhaController: ${senhaController},
 idToken: ${idToken},
 accessToken: ${accessToken},
 user: ${user}

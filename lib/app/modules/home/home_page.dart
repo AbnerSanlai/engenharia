@@ -34,7 +34,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         userPhoto: loginStore.user.photoURL,
       ),
       body: Container(
-        color: Colors.amber.shade100,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/image/fundoEnge.jpg'),
+                fit: BoxFit.fitHeight)),
         child: ListView(
           children: [
             SizedBox(
@@ -45,7 +48,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 funcaoclick: () {
                   Modular.to.pushNamed('/projetos');
                 },
-                localImage: 'assets/image/projetos.png',
+                localImage: 'assets/image/projetos.jpg',
                 title: 'Meus Projetos',
               ),
             ),
@@ -67,7 +70,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             Center(
               child: CustomStackWidget(
                 funcaoclick: () {},
-                localImage: 'assets/image/calculadora.png',
+                localImage: 'assets/image/calculadora.jpg',
                 title: 'Calculos',
               ),
             ),
@@ -77,7 +80,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             Center(
               child: CustomStackWidget(
                 funcaoclick: () {},
-                localImage: 'assets/image/tips.png',
+                localImage: 'assets/image/tips.jpg',
                 title: 'Instruções',
               ),
             ),

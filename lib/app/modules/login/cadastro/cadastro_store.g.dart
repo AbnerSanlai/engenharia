@@ -73,18 +73,33 @@ mixin _$CadastroStore on _CadastroStoreBase, Store {
     });
   }
 
-  final _$verAtom = Atom(name: '_CadastroStoreBase.ver');
+  final _$verSenhaAtom = Atom(name: '_CadastroStoreBase.verSenha');
 
   @override
-  bool get ver {
-    _$verAtom.reportRead();
-    return super.ver;
+  bool get verSenha {
+    _$verSenhaAtom.reportRead();
+    return super.verSenha;
   }
 
   @override
-  set ver(bool value) {
-    _$verAtom.reportWrite(value, super.ver, () {
-      super.ver = value;
+  set verSenha(bool value) {
+    _$verSenhaAtom.reportWrite(value, super.verSenha, () {
+      super.verSenha = value;
+    });
+  }
+
+  final _$verRepSenhaAtom = Atom(name: '_CadastroStoreBase.verRepSenha');
+
+  @override
+  bool get verRepSenha {
+    _$verRepSenhaAtom.reportRead();
+    return super.verRepSenha;
+  }
+
+  @override
+  set verRepSenha(bool value) {
+    _$verRepSenhaAtom.reportWrite(value, super.verRepSenha, () {
+      super.verRepSenha = value;
     });
   }
 
@@ -92,55 +107,22 @@ mixin _$CadastroStore on _CadastroStoreBase, Store {
       ActionController(name: '_CadastroStoreBase');
 
   @override
-  dynamic changeUserName(dynamic value) {
+  void setvisibleSenha() {
     final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
-        name: '_CadastroStoreBase.changeUserName');
+        name: '_CadastroStoreBase.setvisibleSenha');
     try {
-      return super.changeUserName(value);
+      return super.setvisibleSenha();
     } finally {
       _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic changeUserLogin(dynamic value) {
+  void setvisibleRepSenha() {
     final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
-        name: '_CadastroStoreBase.changeUserLogin');
+        name: '_CadastroStoreBase.setvisibleRepSenha');
     try {
-      return super.changeUserLogin(value);
-    } finally {
-      _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeUserSenha(dynamic value) {
-    final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
-        name: '_CadastroStoreBase.changeUserSenha');
-    try {
-      return super.changeUserSenha(value);
-    } finally {
-      _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeUserRepetirSenha(dynamic value) {
-    final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
-        name: '_CadastroStoreBase.changeUserRepetirSenha');
-    try {
-      return super.changeUserRepetirSenha(value);
-    } finally {
-      _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setvisible() {
-    final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
-        name: '_CadastroStoreBase.setvisible');
-    try {
-      return super.setvisible();
+      return super.setvisibleRepSenha();
     } finally {
       _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -158,11 +140,11 @@ mixin _$CadastroStore on _CadastroStoreBase, Store {
   }
 
   @override
-  bool isCadValido() {
+  void cadastrar() {
     final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
-        name: '_CadastroStoreBase.isCadValido');
+        name: '_CadastroStoreBase.cadastrar');
     try {
-      return super.isCadValido();
+      return super.cadastrar();
     } finally {
       _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -175,7 +157,8 @@ nomeController: ${nomeController},
 emailController: ${emailController},
 senhaController: ${senhaController},
 repetirSenhaController: ${repetirSenhaController},
-ver: ${ver}
+verSenha: ${verSenha},
+verRepSenha: ${verRepSenha}
     ''';
   }
 }
