@@ -140,11 +140,22 @@ mixin _$CadastroStore on _CadastroStoreBase, Store {
   }
 
   @override
-  void cadastrar() {
+  bool validaEmail() {
+    final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
+        name: '_CadastroStoreBase.validaEmail');
+    try {
+      return super.validaEmail();
+    } finally {
+      _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void cadastrar(BuildContext context) {
     final _$actionInfo = _$_CadastroStoreBaseActionController.startAction(
         name: '_CadastroStoreBase.cadastrar');
     try {
-      return super.cadastrar();
+      return super.cadastrar(context);
     } finally {
       _$_CadastroStoreBaseActionController.endAction(_$actionInfo);
     }

@@ -9,16 +9,46 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStoreBase, Store {
+  final _$userAtom = Atom(name: '_LoginStoreBase.user');
+
+  @override
+  dynamic get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(dynamic value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
+  final _$photoAtom = Atom(name: '_LoginStoreBase.photo');
+
+  @override
+  dynamic get photo {
+    _$photoAtom.reportRead();
+    return super.photo;
+  }
+
+  @override
+  set photo(dynamic value) {
+    _$photoAtom.reportWrite(value, super.photo, () {
+      super.photo = value;
+    });
+  }
+
   final _$userModelAtom = Atom(name: '_LoginStoreBase.userModel');
 
   @override
-  ObservableList<UserModel> get userModel {
+  dynamic get userModel {
     _$userModelAtom.reportRead();
     return super.userModel;
   }
 
   @override
-  set userModel(ObservableList<UserModel> value) {
+  set userModel(dynamic value) {
     _$userModelAtom.reportWrite(value, super.userModel, () {
       super.userModel = value;
     });
@@ -69,66 +99,6 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
-  final _$idTokenAtom = Atom(name: '_LoginStoreBase.idToken');
-
-  @override
-  dynamic get idToken {
-    _$idTokenAtom.reportRead();
-    return super.idToken;
-  }
-
-  @override
-  set idToken(dynamic value) {
-    _$idTokenAtom.reportWrite(value, super.idToken, () {
-      super.idToken = value;
-    });
-  }
-
-  final _$accessTokenAtom = Atom(name: '_LoginStoreBase.accessToken');
-
-  @override
-  dynamic get accessToken {
-    _$accessTokenAtom.reportRead();
-    return super.accessToken;
-  }
-
-  @override
-  set accessToken(dynamic value) {
-    _$accessTokenAtom.reportWrite(value, super.accessToken, () {
-      super.accessToken = value;
-    });
-  }
-
-  final _$userAtom = Atom(name: '_LoginStoreBase.user');
-
-  @override
-  dynamic get user {
-    _$userAtom.reportRead();
-    return super.user;
-  }
-
-  @override
-  set user(dynamic value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
-    });
-  }
-
-  final _$signInWithGoogleAsyncAction =
-      AsyncAction('_LoginStoreBase.signInWithGoogle');
-
-  @override
-  Future<void> signInWithGoogle() {
-    return _$signInWithGoogleAsyncAction.run(() => super.signInWithGoogle());
-  }
-
-  final _$logoutAsyncAction = AsyncAction('_LoginStoreBase.logout');
-
-  @override
-  Future<void> logout() {
-    return _$logoutAsyncAction.run(() => super.logout());
-  }
-
   final _$loginGoogleAsyncAction = AsyncAction('_LoginStoreBase.loginGoogle');
 
   @override
@@ -169,15 +139,25 @@ mixin _$LoginStore on _LoginStoreBase, Store {
   }
 
   @override
+  bool validarEmail() {
+    final _$actionInfo = _$_LoginStoreBaseActionController.startAction(
+        name: '_LoginStoreBase.validarEmail');
+    try {
+      return super.validarEmail();
+    } finally {
+      _$_LoginStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+user: ${user},
+photo: ${photo},
 userModel: ${userModel},
 ver: ${ver},
 emailController: ${emailController},
-senhaController: ${senhaController},
-idToken: ${idToken},
-accessToken: ${accessToken},
-user: ${user}
+senhaController: ${senhaController}
     ''';
   }
 }

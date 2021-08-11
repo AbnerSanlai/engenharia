@@ -2,6 +2,7 @@ import 'package:engesoft/app/modules/home/home_store.dart';
 import 'package:engesoft/app/modules/login/login_store.dart';
 import 'package:engesoft/app/widgets/custom_drawer_widget.dart';
 import 'package:engesoft/app/widgets/custom_stack_widget.dart';
+import 'package:engesoft/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -28,10 +29,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             )
           ]),
       drawer: CustomDrawerWidget(
-        funcaoSair: loginStore.logout,
+        funcaoSair: () {},
         userMail: loginStore.user.email,
-        userName: loginStore.user.displayName,
-        userPhoto: loginStore.user.photoURL,
+        userName: loginStore.user.username,
+        userPhoto: BASE_URL_BANCO + loginStore.photo.formats.small.url,
       ),
       body: Container(
         decoration: BoxDecoration(

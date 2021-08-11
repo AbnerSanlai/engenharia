@@ -1,11 +1,9 @@
-import 'package:engesoft/app/modules/login/custom_form_field_widget.dart';
 import 'package:engesoft/app/modules/projetos/custom_project_widget.dart';
 import 'package:engesoft/app/modules/projetos/projetos_store.dart';
 import 'package:flutter/material.dart';
 import 'package:engesoft/app/widgets/custom_drawer_widget.dart';
 import 'package:engesoft/app/modules/login/login_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:http/http.dart';
 
 class ProjetosPage extends StatefulWidget {
   final String title;
@@ -38,10 +36,10 @@ class ProjetosPageState extends State<ProjetosPage> {
             )
           ]),
       drawer: CustomDrawerWidget(
-        funcaoSair: loginStore.logout,
-        userMail: loginStore.user.email,
-        userName: loginStore.user.displayName,
-        userPhoto: loginStore.user.photoURL,
+        funcaoSair: () {},
+        userMail: "oginStore.user.email",
+        userName: "loginStore.user.displayName",
+        userPhoto: "loginStore.user.photoUR",
       ),
       body: Container(
         decoration: BoxDecoration(

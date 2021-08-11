@@ -1,6 +1,4 @@
-import 'package:engesoft/app/modules/controller/customalert/customalert_store.dart';
 import 'package:engesoft/app/modules/login/login_store.dart';
-import 'package:engesoft/app/widgets/custom_alert_dialog_alert_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -42,8 +40,14 @@ abstract class _CadastroStoreBase with Store {
   }
 
   @action
-  void cadastrar() {
-    //  loginStore.register(nomeController.text, emailController.text, 'local',
-    //    senhaController.text, '', '');
+  bool validaEmail() {
+    return emailController.text.contains('@');
+  }
+
+  @action
+  void cadastrar(BuildContext context) {
+    if (!verificaSenha() || !validaEmail()) {}
+    loginStore.register(nomeController.text, emailController.text, 'local',
+        senhaController.text, '', '');
   }
 }

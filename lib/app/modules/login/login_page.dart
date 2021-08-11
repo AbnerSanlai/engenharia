@@ -1,11 +1,9 @@
-import 'package:engesoft/app/modules/login/auth_google.dart';
 import 'package:engesoft/app/modules/login/custom_button_widget.dart';
 import 'package:engesoft/app/modules/login/custom_form_field_widget.dart';
 import 'package:engesoft/app/modules/login/login_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants.dart';
@@ -17,7 +15,6 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   LoginStore loginStore = Modular.get();
-  GoogleSignInProvider googleSignInProvider = Modular.get();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -85,7 +82,21 @@ class LoginPageState extends State<LoginPage> {
                         ),
                         CustomButtonWidget(
                           onTap: () {
-                            loginStore.login();
+                            if (loginStore.validarEmail()) {
+                              loginStore.login(context);
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text(
+                                  'Email Invalido',
+                                  style: GoogleFonts.abel(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
                           },
                           title: 'Logar',
                         ),

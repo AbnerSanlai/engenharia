@@ -5,9 +5,9 @@ import 'package:mobx/mobx.dart';
 
 part 'customalert_store.g.dart';
 
-class CustomalertStore = _CustomalertStoreBase with _$CustomalertStore;
+class CustomAlertStore = _CustomAlertStoreBase with _$CustomAlertStore;
 
-abstract class _CustomalertStoreBase with Store {
+abstract class _CustomAlertStoreBase with Store {
   @action
   void customAlertError(BuildContext buildContext, String msg, String title,
       VoidCallback funcbutton) {

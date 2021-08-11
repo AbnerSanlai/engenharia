@@ -1,14 +1,11 @@
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:engesoft/app/model/UserModel.dart';
+import 'package:engesoft/app/modules/controller/customalert/customalert_store.dart';
 import 'package:engesoft/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:url_launcher/url_launcher.dart';
 part 'login_store.g.dart';
@@ -16,10 +13,14 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStoreBase with _$LoginStore;
 
 abstract class _LoginStoreBase with Store {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  CustomAlertStore customDialog = Modular.get();
 
   @observable
-  ObservableList<UserModel> userModel = <UserModel>[].asObservable();
+  var user;
+  @observable
+  var photo;
+  @observable
+  var userModel;
 
   @observable
   bool ver = false;
@@ -35,47 +36,9 @@ abstract class _LoginStoreBase with Store {
   @observable
   TextEditingController senhaController = TextEditingController();
 
-  @observable
-  var idToken;
-
-  @observable
-  var accessToken;
-
-  @observable
-  var user;
-
   @action
-  Future<void> signInWithGoogle() async {
-    UserCredential userCredential;
-
-    if (kIsWeb) {
-      var googleProvider = GoogleAuthProvider();
-      userCredential = await _auth.signInWithPopup(googleProvider);
-    } else {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-      final googleAuthCredential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      userCredential = await _auth.signInWithCredential(googleAuthCredential);
-      accessToken = googleAuthCredential.accessToken;
-      idToken = googleAuthCredential.idToken;
-    }
-
-    this.user = userCredential.user;
-    if (this.user == null) return;
-
-    Modular.to.pushReplacementNamed('/home');
-  }
-
-  @action
-  Future<void> logout() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signOut();
-    if (googleUser == null) {
-      Modular.to.pushReplacementNamed('/');
-    }
+  bool validarEmail() {
+    return (emailController.text != '') && (emailController.text.contains('@'));
   }
 
   @action
@@ -91,13 +54,25 @@ abstract class _LoginStoreBase with Store {
     print(response.isRedirect);
   }
 
-  Future<void> login() async {
-    http.Response response = await http.post(Uri.parse(BASE_URL_AUTH), body: {
-      "identifier": 'reader@strapi.io',
-      "password": 'strapi',
-    });
-
-    print(response.body);
+  Future<void> login(BuildContext context) async {
+    //final dio = Dio();
+    try {
+      final response = await http.post(Uri.parse(BASE_URL_AUTH), body: {
+        "identifier": emailController.text,
+        "password": senhaController.text,
+      });
+      var json = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        this.user = User.fromJson(json["user"]);
+        this.photo = Photo.fromJson(json["user"]["photo"]);
+        Modular.to.pushReplacementNamed('/home');
+      } else if (response.statusCode == 400) {
+        customDialog.customAlertWarning(
+            context, "Email ou senha invalidos", 'Atenção', () {});
+      }
+    } catch (e) {
+      print(e);
+    }
   }
   //const { data } = await axios.post('http://localhost:1337/auth/local', );
 
